@@ -1,0 +1,46 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  background-color: #000;
+  color: #fff;
+}
+
+body {
+  margin: 0;
+  overflow-x: hidden;
+  background-color: #000;
+}
+
+/* --- REALISTIC PLANET SHADING --- */
+/* This creates the shadow on the "dark side" of the planet */
+.planet-texture {
+  width: 100%; height: 100%; border-radius: 50%;
+  background-size: 200% 100%; background-repeat: repeat-x;
+  box-shadow: 
+    inset -30px -20px 80px 10px rgba(0,0,0,0.9), /* Dark Shadow */
+    inset 10px 10px 30px rgba(255,255,255,0.15); /* Light Reflection */
+}
+
+/* Planet Rotation Animation */
+@keyframes planet-rotation {
+  0% { background-position: 0% center; }
+  100% { background-position: -200% center; }
+}
+.animate-rotate { animation: planet-rotation 120s linear infinite; }
+
+/* --- GLASS UI --- */
+.glass-card {
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+}
+
+/* Earth Horizon Footer */
+.realistic-horizon {
+  background-image: url('/earth-horizon.jpg'); 
+  background-size: cover; background-position: center top;
+  mask-image: linear-gradient(to bottom, black 40%, transparent 100%);
+}
